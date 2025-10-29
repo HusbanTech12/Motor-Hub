@@ -7,5 +7,5 @@ export {
     Hero,
     CustomButton,
     Navbar,
-    Footer
+    Footer,
 }
