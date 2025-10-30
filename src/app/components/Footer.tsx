@@ -1,6 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
+import { footerLinks } from '../constants'
+import Link from 'next/link'
+
 const Footer = () => {
   return (
     <>
@@ -24,6 +26,30 @@ const Footer = () => {
             </p>     
               
       </div>
+      
+       {/* Footer-Links */}
+       <div className='footer__links'>
+        {footerLinks.map((link) =>(
+
+          <div key={link.title} className='footer__link'>
+            <h3 className='font-bold'>{link.title}</h3>
+
+            {link.links.map((item) =>(
+             <Link  
+             key={item.title}
+             href={item.url}
+             className='text-gray-700'
+             >
+              {item.title }
+             </Link>
+            ))}
+          </div>
+        ))}
+       </div>
+       
+       <div className='flex justify-between items-center flex-wrap mt-10 border-t border-gray-200 sm:px-16 px-6 py-10'>
+
+       </div>
 
      </div>
 
@@ -34,3 +60,6 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+
