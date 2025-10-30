@@ -47,9 +47,20 @@ const Footer = () => {
         ))}
        </div>
        
-       <div className='flex justify-between items-center flex-wrap mt-10 border-t border-gray-200 sm:px-16 px-6 py-10'>
+       {/* <div className='flex justify-between items-center mt-10 border-t border-gray-200 sm:px-16 px-6 py-10'>
+         <p>@20025 MotorHub. All Rights Reserved</p>
+         
+        <div className='footer__copyrights-link'>
+         <Link href={'/'} className='text-gray-700'>
+         Privacy Policy
+         </Link>
 
-       </div>
+         <Link href={'/'} className='text-gray-700'>
+           Terms Of Use
+         </Link>
+        </div>
+
+       </div> */}
 
      </div>
 
