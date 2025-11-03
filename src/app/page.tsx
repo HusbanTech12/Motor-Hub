@@ -23,7 +23,7 @@ export default function page() {
          
          <div className='home__filter-container'>
           <CustomFilter />
-          <CustomFilter/>
+          {/* <CustomFilter/> */}
 
          </div>
 

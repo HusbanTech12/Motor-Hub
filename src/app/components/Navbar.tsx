@@ -11,7 +11,7 @@ const Navbar = () => {
       
        <Link href='/' className='flex items-center  '> 
        <Image 
-       src='/images/hero-car.webp'
+       src='/hero-car.webp'
        alt='Motor-Hub Image'
        width={118}
        height={18}

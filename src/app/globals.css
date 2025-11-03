@@ -64,7 +64,7 @@
  }
 
  .hero__image__overlay{
-  @apply absolute xl:-top-24 xl:-right-1/2 -right-1/4 bg-[url('/images/hero-bg.png')]  bg-repeat-round -z-10 w-full xl:h-screen h-[590px] overflow-hidden; 
+  @apply absolute xl:-top-24 xl:-right-1/2 -right-1/4 bg-[url('/hero-bg.png')]  bg-repeat-round -z-10 w-full xl:h-screen h-[590px] overflow-hidden; 
  }
 
 
@@ -121,3 +121,10 @@
   @apply mt-16 flex justify-center items-center flex-col gap-2;
 }
 /* END: Home styles */
+
+
+/* Start Search Styles */
+
+.search-manufacturer__imput{
+  @apply w-full h-[48px] pl-12 p-4 rounded-full max-sm:rounded-full bg-gray-300 outline-none cursor-pointer text-sm;
+}

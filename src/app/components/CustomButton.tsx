@@ -12,7 +12,7 @@ const CustomButton = ({title, containerStyles , handleClick, btnType } : CustomB
      onClick={handleClick}
     
     >
-    <span className= {`flex-1`}>
+    <span className= {`flex-1 `}>
         {title}   
     </span>
     </button>

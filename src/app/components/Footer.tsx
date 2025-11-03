@@ -13,7 +13,7 @@ const Footer = () => {
       
       <div className='flex flex-col justify-start items-start gap-6'>
         <Image 
-               src='/images/hero-car.webp'
+               src='/hero-car.webp'
                alt='Logo'
                width={118}
                height={18}
