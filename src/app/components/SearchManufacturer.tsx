@@ -3,7 +3,7 @@
 import { useState, Fragment } from 'react'
 import Image from 'next/image'
 import { SearchManufacturerProps } from '../types'
-import { Combobox , ComboboxButton, ComboboxInput, ComboboxOptions, Transition} from '@headlessui/react'
+import { Combobox,Transition} from '@headlessui/react'
 import { manufacturers } from '../constants'
 
 const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturerProps   ) => {
@@ -20,11 +20,14 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
 
 
       )
+      
   return (
     <div className='search-manufacturer'>
-        <Combobox>
+        <Combobox value={manufacturer} onChange={setManufacturer}>
             <div className='relative w-full'>
-             <ComboboxButton className='absolute top-[14px]'>
+
+          {/* Button for the combobox. Click on the icon to see the complete dropdown */}
+               <Combobox.Button className='absolute top-[14px]'>
                 <Image 
                 src='/car-logo.svg'
                 width={20}
@@ -33,38 +36,70 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
                 alt='car logo'
 
                 />
-               </ComboboxButton>
-
-               <ComboboxInput
-                className='search-manufacturer__imput'
+               </Combobox.Button>
+                
+                {/* Input field for searching */}
+               <Combobox.Input
+                className='search-manufacturer__input'
                 placeholder='Search Cars'
                 displayValue={(manufacturer : string) => manufacturer} 
-                onChange={(e) => setQuery(e.target.value)}     
+                onChange={(e:React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)} // Update the search query when the input changes     
                />
              
-
-               {/* <Transition
-               as={Fragment}
+                 {/* Transition for displaying the options */}
+               <Transition
+               as={Fragment} // group multiple elements without introducing an additional DOM node i.e., <></>
                leave='transition ease-in duration-100'
                leaveFrom= 'opacity-100'
                leaveTo = 'opacity-0'
-               afterLeave = {() => setQuery('') }
+               afterLeave = {() => setQuery('') } // Reset the search query after the transition completes
                >
 
-                <ComboboxOptions>
+                 <Combobox.Options>
+                 {
+                  filteredManuFacturers.map((item) => (
+                   <Combobox.Option
+                     key={item}
+                     value={item}
+                     className={({ active }) =>
+                     `relative search-manufacturer__option ${
+                      active ? 'bg-primary-blue text-white' : 'text-gray-900'
+                      }`
+
+                       }
+                     >
+                     {item}
+                  </Combobox.Option>
+                )
+             )}
+                 </Combobox.Options>
+                </Transition>             
+            </div>
+        </Combobox>
+
+       
+      </div>
+  )
+}
+
+export default SearchManufacturer
+
+
+{/* 
+<Combobox.Options>
                    {filteredManuFacturers.length === 0 && query !== '' && (
                     
-                    <ComboboxOptions
+                    <Combobox.Option
                      value={query}
                       className='search-manufacturer__option'
                       >
                      Create "{query}"
 
-                    </ComboboxOptions>  
+                    </Combobox.Option>  
 
-                   ):(
+                    ):(
                     filteredManuFacturers.map((item) => (
-                      <ComboboxOptions
+                      <Combobox.Option
                       key={item}
                       value={item}   
                       className={({active}) => `
@@ -74,17 +109,7 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
                          `}
                          >
                       {item}
-                      </ComboboxOptions>
+                      </Combobox.Option>
                    )) }
 
-                </ComboboxOptions>
-                </Transition>              */}
-            </div>
-        </Combobox>
-
-       
-    </div>
-  )
-}
-
-export default SearchManufacturer
+                </Combobox.Options> */}

@@ -1,13 +1,16 @@
 'use client'
 import React from 'react'
-import Hero from './components/Hero'
-import SearchBar from './components/SearchBar'
-import CustomFilter from './components/CustomFilter'
+import {Hero,SearchBar,CustomFilter,CarCard} from './components'
+import { fetchCars } from './utils'
 
 
 // import React from 'react'
 
-export default function page() {
+export default async function page() {
+  const allCars = await fetchCars()
+  console.log(allCars);
+  
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
   return (
     <>
       <Hero />
@@ -28,6 +31,26 @@ export default function page() {
          </div>
 
       </div>  
+
+      {!isDataEmpty ? (
+
+        <section>
+         <div className='home__cars-wrapper'>
+         {allCars?.map((car)=>(
+          <CarCard key={car} />
+         ))}
+
+         </div>
+        </section>
+      ):(
+      
+        <div className='home__error-container'>
+          <h2 className='text-black text-xl font-bold'>Oops, no results</h2>
+          <p>{allCars?.message}</p>
+        </div>
+
+
+      )}
     </div>
     </>
   )
